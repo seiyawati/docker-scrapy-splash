@@ -1,0 +1,19 @@
+Content-Security-Policy-Report-Only: default-src data: https: 'unsafe-inline' 'unsafe-eval'; report-uri https://track.buyma.com/csp/report.json
+Last-Modified: Tue, 14 Sep 2021 06:49:21 GMT
+Etag: "187892-5ea-5cbeefb389e40"-gzip
+Accept-Ranges: bytes
+Content-Encoding: gzip
+Content-Type: text/plain; charset=UTF-8
+Expires: Mon, 13 Dec 2021 08:01:45 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Mon, 13 Dec 2021 08:01:45 GMT
+Vary: Accept-Encoding
+Server-Timing: cdn-cache; desc=REVALIDATE
+Server-Timing: edge; dur=11
+Server-Timing: origin; dur=9
+Strict-Transport-Security: max-age=31536000
+Set-Cookie: _bTcSnK2z_1=MQ==; Expires=Wed, 13 Dec 2051 00:00:00 GMT; Domain=.www.buyma.com; Path=/
+Set-Cookie: _9UoYx0yr_2=MjAyMS8xMi8xMyAxNzowMTo0NQ==; Expires=Wed, 13 Dec 2051 00:00:00 GMT; Domain=.www.buyma.com; Path=/
+Set-Cookie: _gWy89cor_3=MjAyMS8xMi8xMyAxNzowMTo0NQ==; Expires=Wed, 13 Dec 2051 00:00:00 GMT; Domain=.www.buyma.com; Path=/
+Set-Cookie: _bom4g50s_7=MjExZmU4ZWItMWQxOC00NzZjLWIzM2QtZTdkMTJjZTQxMDg4; Expires=Wed, 13 Dec 2051 00:00:00 GMT; Domain=.www.buyma.com; Path=/
