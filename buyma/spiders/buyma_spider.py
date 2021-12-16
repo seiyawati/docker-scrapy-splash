@@ -1,22 +1,29 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from scrapy.http import Request
 from ..items import Buyma
 
 
 class BuymaSpiderSpider(scrapy.Spider):
     name = 'buyma_spider'
-    allowed_domains = ['buyma.com']
-    start_urls = ['https://www.buyma.com/r/-C3260/']
+    allowed_domains = ['books.toscrape.com']
+    start_urls = ['http://books.toscrape.com']
 
     def parse(self, response):
-        for post in response.xpath('//li[@class="product "]'):
+        books = response.xpath('.//*[@class="product_pod"]')
+        for book in books:
+            item = Buyma()
 
-            yield Buyma(
-                url=post.xpath('//div[@class="product_Action"]/@item-url').extract(),
-                name=post.xpath('//div[@class="product_name"]/a/text()').extract(),
-                price=post.xpath('//span[@class="Price_Txt"]/text()').extract(),
-                brand=post.xpath('//a[@class="brandname"]//text()').extract(),
-                shopper=post.xpath('//div[@class="product_Buyer"]/a//text()').extract(),
-            )
+            item["title"] = book.xpath('.//h3/a/@title').get()
+            item["price"] = book.xpath('.//*[@class="price_color"]/text()').get()
+            img_url = book.xpath('.//*[@class="image_container"]/a/@href').get()
+            item["detail_page_url"] = "http://books.toscrape.com/" + img_url
 
-        return
+            yield item
+
+
+        # If there is a next button on this page, move the crawler
+        next_page_url = response.xpath('//a[text()="next"]/@href').get()
+        abs_next_page_url = response.urljoin(next_page_url)
+        if abs_next_page_url is not None:
+            yield Request(abs_next_page_url, callback=self.parse)

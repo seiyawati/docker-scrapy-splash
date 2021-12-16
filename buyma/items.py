@@ -9,8 +9,6 @@ import scrapy
 
 
 class Buyma(scrapy.Item):
-    url = scrapy.Field()
-    name = scrapy.Field()
+    title = scrapy.Field()
     price = scrapy.Field()
-    brand = scrapy.Field()
-    shopper = scrapy.Field()
+    detail_page_url = scrapy.Field()
