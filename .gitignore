@@ -1,2 +1,2 @@
-docker/data/
+docker/db/data/
 .scrapy/
