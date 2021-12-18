@@ -9,6 +9,16 @@ import scrapy
 
 
 class Buyma(scrapy.Item):
-    title = scrapy.Field()
+    name = scrapy.Field()
     price = scrapy.Field()
-    detail_page_url = scrapy.Field()
+    url = scrapy.Field()
+
+class Rakuten(scrapy.Item):
+    name = scrapy.Field()
+    price = scrapy.Field()
+    brand = scrapy.Field()
+
+class Books(scrapy.Item):
+        title = scrapy.Field()
+        price = scrapy.Field()
+        detail_page_url = scrapy.Field()
