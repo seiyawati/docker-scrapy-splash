@@ -1,2 +1,3 @@
 docker/db/data/
 .scrapy/
+buyma/_pycache_/
