@@ -19,6 +19,11 @@ class Rakuten(scrapy.Item):
     brand = scrapy.Field()
 
 class Books(scrapy.Item):
-        title = scrapy.Field()
-        price = scrapy.Field()
-        detail_page_url = scrapy.Field()
+    title = scrapy.Field()
+    price = scrapy.Field()
+    detail_page_url = scrapy.Field()
+
+class ProductItem(scrapy.Item):
+    url = scrapy.Field()
+    name = scrapy.Field()
+    price = scrapy.Field()
