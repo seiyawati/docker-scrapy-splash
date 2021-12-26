@@ -9,7 +9,7 @@ from scrapy.linkextractors import LinkExtractor
 from ..items import ProductItem
 
 def process_item_list_request(request: Request):
-        return request
+    return request
 
 def use_splash(request: Request):
     script = """
