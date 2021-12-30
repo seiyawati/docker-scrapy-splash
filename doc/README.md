@@ -48,6 +48,23 @@ HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 - USER-AGENT  
 response.request.headers['User-Agent']
 
+ScrapyではデフォルトでLIFOになっている。
+これをFIFOにするのは以下の設定を変更する。  
+
+- SCHEDULER_DISK_QUEUE  
+  `scrapy.squeues.PickleLifoDiskQueue`(default)
+
+- SCHEDULER_MEMORY_QUEUE  
+  `scrapy.squeues.LifoMemoryQueue`(default)
+
+- CONCURRENT_REQUESTS  
+  デフォルトで16  
+  Scrapyダウンローダーが実行する並列(すなわち同時)リクエストの最大数。
+
+- DEPTH_PRIORITY  
+  デフォルト0  
+  深さに基づいて Request の priority を調整するために使用される整数。
+
 ## リンクの辿り方
 
 - scrapy.Request(URL, callback=コールバックメソッド)  
@@ -77,3 +94,13 @@ a要素のSelectorから自動的にhref属性からリンクを取得
 ```
 scrpay crawl [spider名] -o %(name)s_%(time)s.json
 ```
+
+## 対象ページ取得順
+
+- queue（キュー)
+  先入先出の構造のことをいう。
+  FIFO(First IN First Out)
+
+- stack（スタック）
+  後入先出の構造のことをいう。
+  LIFO(Last IN First Out)
