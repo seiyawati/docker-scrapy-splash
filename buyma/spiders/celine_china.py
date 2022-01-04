@@ -14,19 +14,18 @@ def process_item_list_request(request: Request):
 def use_splash(request: Request):
     script = """
                 function main(splash, args)
-                    splash.images_enabled = false
-                    splash.js_enabled = true
-                    assert(splash:go{args.url, headers=args.headers})
-                    splash:wait(3)
+                    assert(splash:go(args.url))
+                    assert(splash:wait(0.5))
                     return {
-                        html = splash:html()
+                      html = splash:html(),
+                      png = splash:png(),
+                      har = splash:har(),
                     }
                 end
             """
     request.meta['splash'] = {
                 'endpoint':'execute',
                 'args':{
-                    'wait': 15,
                     'lua_source': script
                     }
                 }
@@ -62,4 +61,5 @@ class CelineChinaSpider(CrawlSpider):
             item['url'] = response.url
             item['name'] = response.xpath('normalize-space(//div[@class="component-products-right__name"]/text())').get()
             item['price'] = response.xpath('normalize-space(//div[@class="component-products-right__price font-neueBold mb-28"]/text())').get()
+            item['image'] = response.xpath('//ul[@class="component-products-image-list-images layout-desktop"]//img/@src').getall()
             return item
