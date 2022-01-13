@@ -1,3 +1,7 @@
 docker/db/data/
 .scrapy/
 buyma/_pycache_/
+.venv/
+project.egg-info
+scrapinghub.yml
+build/
